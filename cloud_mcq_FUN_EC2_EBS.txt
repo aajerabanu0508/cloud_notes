@@ -1,0 +1,281 @@
+☁️ Cloud + EC2 + EBS – MCQ Test (30 Questions)
+🔹 Section 1: Cloud Basics (1–10)
+1. What is cloud computing?
+
+A. Storing data only on local systems
+B. Delivering IT resources over the internet
+C. Using only physical servers
+D. Running applications without OS
+
+Answer: B
+
+2. Which is NOT a cloud deployment model?
+
+A. Public Cloud
+B. Private Cloud
+C. Hybrid Cloud
+D. Static Cloud
+
+Answer: D
+
+3. Which service model provides virtual machines?
+
+A. SaaS
+B. PaaS
+C. IaaS
+D. FaaS
+
+Answer: C
+
+4. Which of the following is an example of SaaS?
+
+A. Amazon EC2
+B. AWS Lambda
+C. Gmail
+D. Amazon VPC
+
+Answer: C
+
+5. What is the main advantage of cloud computing?
+
+A. Fixed cost
+B. Scalability
+C. Manual provisioning
+D. Limited access
+
+Answer: B
+
+6. Pay-as-you-go means:
+
+A. Pay upfront
+B. Pay only for used resources
+C. Free usage
+D. Fixed billing
+
+Answer: B
+
+7. Which cloud model offers maximum control?
+
+A. SaaS
+B. PaaS
+C. IaaS
+D. All same
+
+Answer: C
+
+8. Which of the following is a region in AWS?
+
+A. us-east-1
+B. AZ-1
+C. subnet-1
+D. vpc-1
+
+Answer: A
+
+9. What is high availability?
+
+A. Running only one server
+B. Running across multiple locations
+C. Using local storage
+D. Manual scaling
+
+Answer: B
+
+10. What is elasticity in cloud?
+
+A. Fixed resources
+B. Automatic scaling up/down
+C. Data encryption
+D. Backup process
+
+Answer: B
+
+🔹 Section 2: EC2 (11–20)
+11. What is Amazon EC2?
+
+A. Database service
+B. Virtual server
+C. Storage service
+D. Networking service
+
+Answer: B
+
+12. What is an AMI?
+
+A. Network interface
+B. Machine image template
+C. Storage volume
+D. Security group
+
+Answer: B
+
+13. Which instance type is best for compute-intensive tasks?
+
+A. T2
+B. M5
+C. C5
+D. R5
+
+Answer: C
+
+14. What is a security group?
+
+A. Firewall for EC2
+B. Storage policy
+C. Backup system
+D. Load balancer
+
+Answer: A
+
+15. Default port for SSH?
+
+A. 21
+B. 22
+C. 80
+D. 443
+
+Answer: B
+
+16. Default port for HTTP?
+
+A. 22
+B. 80
+C. 443
+D. 3306
+
+Answer: B
+
+17. What happens when you stop an EC2 instance?
+
+A. Data lost
+B. Instance terminated
+C. You stop paying compute charges
+D. Storage deleted
+
+Answer: C
+
+18. Which IP changes after restart?
+
+A. Elastic IP
+B. Private IP
+C. Public IP
+D. MAC address
+
+Answer: C
+
+19. What is Elastic IP?
+
+A. Temporary IP
+B. Static public IP
+C. Private IP
+D. DNS name
+
+Answer: B
+
+20. Scenario:
+
+You want your EC2 to auto-scale based on traffic. What should you use?
+
+A. Security Group
+B. Auto Scaling Group
+C. EBS
+D. IAM
+
+Answer: B
+
+🔹 Section 3: EBS (21–30)
+21. What is Amazon EBS?
+
+A. Object storage
+B. Block storage
+C. File storage
+D. Database
+
+Answer: B
+
+22. EBS volume is attached to:
+
+A. S3
+B. EC2
+C. VPC
+D. IAM
+
+Answer: B
+
+23. What happens to EBS when EC2 stops?
+
+A. Deleted
+B. Retained
+C. Corrupted
+D. Moved
+
+Answer: B
+
+24. Which EBS type is SSD-based?
+
+A. gp2/gp3
+B. st1
+C. sc1
+D. magnetic
+
+Answer: A
+
+25. Which EBS type is cheapest?
+
+A. gp3
+B. io1
+C. sc1
+D. gp2
+
+Answer: C
+
+26. What is an EBS snapshot?
+
+A. Backup of volume
+B. Instance copy
+C. Network config
+D. Firewall rule
+
+Answer: A
+
+27. Scenario:
+
+Your application requires high IOPS database performance. Which EBS type?
+
+A. gp2
+B. sc1
+C. io1/io2
+D. st1
+
+Answer: C
+
+28. Scenario:
+
+You terminate EC2 but want to keep data. What should you do?
+
+A. Delete EBS
+B. Enable “Delete on Termination = False”
+C. Use S3
+D. Restart EC2
+
+Answer: B
+
+29. Can you attach one EBS volume to multiple EC2 instances?
+
+A. No
+B. Yes always
+C. Only in same region
+D. Only with Multi-Attach (specific types)
+
+Answer: D
+
+30. Scenario:
+
+Your EC2 instance fails, but you need data. What can you do?
+
+A. Restart instance
+B. Create snapshot and attach to new instance
+C. Delete volume
+D. Change security group
+
+Answer: B
