@@ -1,0 +1,86 @@
+ELB
+----------------------------------------------------------------------------------------------------------------
+CLB:
+•	Instance creation: Configure “No of instances” under summary at right page
+•	Rename the instances created
+•	Create web host for the created instances 
+•	Go to EC2 Dashboard
+•	In the left panel, select Load Balancers
+•	Click Create Load Balancer
+•	Choose Classic Load Balancer
+•	Load Balancer Name
+•	Scheme: Internet facing (choose this); Internal
+•	Select all of the listed Availability Zones
+•	Create new Security Group (Security Group Name; Description; VPC (Default or Same VPC as instances), add inbound rule HTTP port 80)
+•	Check if Listener is configured 
+•	Health Check (ping path just: /) -> Advanced health check 
+•	Add EC2 Instances created 
+•	Create CLB
+•	Copy DNS name of CLB
+•	Paste in browser
+•	Request gets distributed among instances
+
+ALB:
+•	Instance creation: Configure “No of instances” under summary at right page
+•	Rename the instances created
+•	Create web host for the created instances 
+•	Go to EC2 Dashboard
+•	In the left panel, select Load Balancers
+•	Choose Application Load Balancer
+•	Load Balancer Name
+•	Scheme: Internet facing (choose this); Internal
+•	Select all of the listed Availability Zones
+•	Create new Security Group (Security Group Name; Description; VPC (Default or Same VPC as instances), add inbound rule HTTP port 80)
+•	Check if Listener is configured 
+•	Click Create target group (Under: Default action)
+•	Configure target group (Target type: Instances; Target group name; Protocol; Port; VPC)
+•	Click Next
+•	Register Targets: Select the instances; Click include as pending below
+•	Next -> Create Target group
+•	Now under Default Action select the created target group
+•	Create ALB
+•	Copy DNS name
+•	Paste in browser
+•	Request gets distributed among instances
+
+NLB:
+•	Instance creation: Configure “No of instances” under summary at right page
+•	Rename the instances created
+•	Create web host for the created instances 
+•	Go to EC2 Dashboard
+•	In the left panel, select Load Balancers
+•	Choose Application Load Balancer
+•	Enter Load Balancer Name
+•	Scheme: Internet-facing (choose this) OR Internal
+•	Select all listed Availability Zones/Subnets
+•	Create new Security Group
+•	Check if Listener is configured 
+•	click Create target group
+•	Register Targets 
+•	Next -> Create Target group
+•	Under Default action, select the created target group
+•	Click Create Load Balancer
+•	Copy DNS name of NLB
+•	Paste in browser
+
+GWLB:
+•	Instance creation: Configure “No of instances” under summary at right page
+•	Rename the instances created
+•	Create web host for the created instances 
+•	Go to EC2 Dashboard
+•	In the left panel, select Load Balancers
+•	Click Create Load Balancer
+•	Choose Gateway Load Balancer
+•	Enter Load Balancer Name
+•	Scheme: Internal (GWLB is generally internal)
+•	IP address type = IPv4
+•	Select all listed Availability Zones/Subnets
+•	Create new Security Group
+•	Check if Listener is configured
+•	Click Create Target Group
+•	Register Targets 
+•	Next -> Create Target group
+•	Under Default action, select the created target group
+•	Click Create Load Balancer
+•	Method 1: Target Groups → Targets if status becomes Healthy then it is working.
+•	Method 2: Load Balancers → GWLB → Monitoring Check: HealthyHostCount, ActiveFlowCount, Processed Bytes. If metrics increase: GWLB is processing traffic

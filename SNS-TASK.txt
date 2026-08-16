@@ -1,0 +1,149 @@
+S3 Event Notification → SNS:
+GUI-based easier method:
+•	Create SNS topic
+•	Open created topic
+•	Click: Create subscription
+•	Protocol: Email
+•	Endpoint: Enter your email
+•	Click: Create subscription
+•	Check your email: Confirm subscription
+•	Open your bucket
+•	Inside bucket → Click: Properties
+•	Scroll down to: Event notifications
+•	Click: Create event notification
+•	Event Notification Name
+•	Event types: All object create events
+•	Destination: SNS topic
+•	Specify SNS topic: Choose from your SNS topics
+•	Save changes
+•	Now upload any file into S3 bucket.
+•	You should receive notification mail from AWS.
+
+Manual Method: Mams
+•	Create SNS Topic
+•	Open created topic
+•	Click Create Subscription
+•	Protocol = Email
+•	Endpoint = Your Email
+•	Confirm mail from inbox
+•	Add SNS Topic Policy
+{
+"Version": "2012-10-17",
+"Id": "example-ID",
+"Statement": [
+{
+"Sid": "ExampleSNSPolicy",
+"Effect": "Allow",
+"Principal": {
+"Service": "s3.amazonaws.com"
+},
+"Action": "SNS:Publish",
+"Resource": "SNS-topic-ARN",
+"Condition": {
+"ArnLike": {
+"aws:SourceArn": "arn:aws:s3:*:*:bucket-name"
+},
+"StringEquals": {
+"aws:SourceAccount": "AWS-account-ID"
+}
+}
+}
+]
+}
+Replace in the code with:
+SNS Topic ARN
+→ SNS → Topics → Select Topic → Copy ARN
+Bucket Name
+→ S3 → Buckets → Copy bucket name
+AWS Account ID
+→ Top right profile → Account ID / My Account
+•	Open Bucket
+•	Properties
+•	Event Notifications
+•	Create Event Notification
+•	Name
+•	Event Type = All Object Create Events
+•	Destination = SNS Topic
+•	Select SNS topic
+•	Save
+•	Upload object into bucket. Email notification received.
+
+----------------------------------------------------------------------------------------------------------------
+CloudWatch + SNS
+----------------------------------------------------------------------------------------------------------------
+CloudWatch + windows EC2:
+•	Create a SNS Topic
+•	Create SNS Subscription after creating SNS Topic
+- Email / SMS
+- Confirm subscription
+•	Select the Windows EC2 instance
+•	Configure Security Group:
+- RDP
+- TCP Port 3389
+- Source: Anywhere (0.0.0.0/0) {by default when instance created it is there}
+•	Click “Create status check alarm”
+•	Type of data to sample: CPU Utilization
+•	Set:
+- Threshold value (Percent)
+- Condition (Greater than / Less than etc.)
+•	Turn Alarm Actions ON
+•	Select any one action:
+- Stop
+- Reboot
+- Terminate
+- Recover
+•	Turn Alarm Notification ON
+•	Select SNS Topic
+•	Click “Create”
+•	To edit the created alarm:
+- Search CloudWatch
+- Left Panel: Click “Alarms”; Click “All alarms”
+- You should see your created alarm there. Select the alarm
+- Actions → Edit
+
+CloudWatch Alarm using Only CloudWatch:
+•	Search “CloudWatch”
+•	Left panel: Click “Alarms”
+•	Click: “Create alarm”
+•	Click: “Select metric”
+•	Select:
+- EC2
+- Per-Instance Metrics
+•	Choose- CPUUtilization
+•	Select the EC2 instance metric
+•	Click: “Select metric”
+•	Set:
+- Threshold value
+- Condition (Greater than / Less than etc.)
+•	Configure additional settings if needed:
+- Period
+- Consecutive periods
+•	Select EC2 action
+•	Select any one action:
+- Stop
+- Reboot
+- Terminate
+- Recover
+•	Turn Notification ON
+•	Select SNS Topic
+•	Give Alarm Name
+•	Click: “Create alarm”
+•	Result: CloudWatch monitors the EC2 instance and triggers alarm actions/notifications when the threshold is crossed.
+
+CloudWatch + Linux Ec2:
+•	Create Linux EC2 instance
+•	Configure Security Group:
+- SSH
+- TCP Port 22
+- Source: Anywhere (0.0.0.0/0)
+•	Create CloudWatch Alarm for Linux Instance (same like we did for windows)
+•	Open MobaXterm
+•	Click: Session
+•	Select: SSH
+•	Enter: Remote host = Public IPv4 address
+•	Specify username: ec2-user (Amazon Linux)
+•	Go to: Advanced SSH settings
+•	Enable: Use private key
+•	Select: PEM key file
+•	Click: OK / Connect
+•	Result: Linux EC2 instance opens in terminal.
