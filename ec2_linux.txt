@@ -1,0 +1,24 @@
+ec2-user@ip-172-31-5-117 ~]$ hostname 
+[ec2-user@ip-172-31-5-117 ~]$ sudo hostnamectl set-hostname aajera 
+[ec2-user@ip-172-31-5-117 ~]$ hostname
+aajera
+[ec2-user@ip-172-31-5-117 ~]$ sudo adduser aajera
+[[ec2-user@ip-172-31-5-117 ~]$ sudo passwd aajera
+Changing password for user aajera.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[ec2-user@ip-172-31-5-117 ~]$ sudo usermod -aG wheel aajera
+[ec2-user@ip-172-31-5-117 ~]$ su
+[ec2-user@ip-172-31-5-117 ~]$ sudo su
+[root@aajera ec2-user]# yum istall httpd -y
+systemctl start httpd
+ systemctl enable httpd
+ cd /var/www/html {go to default website folder of apache web server}
+ mkdir website {create folder name: website}
+ cd website {open folder website}
+ touch index.html {create file index.html}
+ echo "<h1>Hello from Linux EC2 Website</h1>" > index.html {write into file}
+ cat index.html {Read file}
+ cp index.html /var/www/html {Copy index.html file to Apache main website folder
