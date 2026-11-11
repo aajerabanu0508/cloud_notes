@@ -1,0 +1,88 @@
+Deployment Process Flow Guide
+
+Download a project from Github or build a own App 
+Open Project in any IDE (either vs code or Antigravity ) 
+In the chat chat Prompt run the command “ Analyze the Project and run “
+Analyze the tech stack of the project for both Backend and frontend 
+Deployment 
+Manual 
+Automatic Using github actions
+Push the source code to github  , Launch EC2 , install git in server , do Git pull and run the saas using ReadMe File 
+Before that create new Github repo and push the source code to github 
+Launch the ubuntu server in the aws 
+Note the public IP and private key
+For automatic Deployment 
+Create a folder called .github in main folder 
+Create folder called Workflow 
+Create file called deploy.yml 
+Add the public and private key to github secret 
+In your GitHub repository, navigate to:
+Settings → Secrets and variables → Actions → New repository secret
+
+
+
+
+# 1. Validate configuration
+docker compose config
+
+# 2. Build and start
+docker compose up --build
+
+# 3. If you want background mode
+docker compose up --build -d
+
+# 4. Check containers
+docker compose ps
+
+# 5. Check logs
+docker compose logs
+docker compose logs backend
+docker compose logs nginx
+
+# 6. Stop everything
+docker compose down
+1.run the project locally 
+2.create repo on github
+git init
+git add .
+git commit -m "Initial Student Task Manager application"
+git branch -M main
+git remote add origin https://github.com/YOUR_GITHUB_USERNAME/student-task-manager.git
+git push -u origin main 
+Mkdir ~/.ssh/ubuntu.pem
+3. Is there any mistake use this method
+cp /mnt/c/Users/aajer/Downloads/ubuntu.pem ~/.ssh/ubuntu.pem
+chmod 400 ~/.ssh/ubuntu.pem
+4.install docker on ec2
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl git
+sudo install -m 0755 -d /etc/apt/keyrings
+
+sudo curl -fsSL \
+  https://download.docker.com/linux/ubuntu/gpg \
+  -o /etc/apt/keyrings/docker.asc
+
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  (./etc/os-release&&echo"VERSION_CODENAME") stable" \
+  | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get install -y \
+  docker-ce \
+  docker-ce-cli \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-compose-plugin
+
+sudo systemctl enable --now docker
+sudo docker --version
+sudo docker compose version
+sudo usermod -aG docker "$USER"
+docker ps
+
+
+1.run the backend 
+#python manage runserver
+.ven/Script
