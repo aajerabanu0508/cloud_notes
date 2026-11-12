@@ -1,0 +1,28 @@
+--------------s3-----------------------------
+1.create bucket
+2.Upload File/Folder to S3:
+3.Access Uploaded Object:
+4.Make Object Public Using ACL
+5.Bucket Policy:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadForWebsite",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOUR-BUCKET-NAME/*"
+    }
+  ]
+}
+
+6.Object ACL:
+7.Static Website Hosting:
+8.Server Access Logging:
+9.S3 Bucket Versioning:
+10.S3 Lifecycle Policy:
+11.Cross-Region Replication (CRR):
+
+
