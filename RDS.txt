@@ -1,0 +1,36 @@
+1. Task 1– Create an RDS MySQL Database
+2. Task 2 – Configure RDS Security Group
+3. Task 3 – Connect EC2 to RDS
+#sudo yum install mariadb105 -y
+#mysql -h YOUR-RDS-ENDPOINT \
+-u dbadmin \
+-p
+#CREATE DATABASE ecommerce;
+#USE ecommerce;
+#CREATE TABLE customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(150),
+    city VARCHAR(100)
+);
+#INSERT INTO customers (name, email, city)
+VALUES
+('Arun', 'arun@example.com', 'Salem'),
+('Priya', 'priya@example.com', 'Chennai'),
+('Rahul', 'rahul@example.com', 'Bangalore');
+#SELECT * FROM customers;
+4.Task 4 – RDS High Availability using Multi-AZ
+5. Task 5 – Understand Read Replicas
+6. Task 6 – RDS Backup and Recovery
+
+---------------------------------DNS------------------------------------------
+1. Task 1 – Register or use a domain
+2. Task 2 – Create a Public Hosted Zone
+3. Task 3 – Create DNS Records
+4. Task 4 – Route 53 Routing Policies
+5. Task 5 – Create a Private Hosted Zone
+6. Task 6 – Test DNS using Linux commands
+sudo dnf install bind-utils -y
+nslookup www.yourdomain.com
+dig www.yourdomain.com
+curl -I http:// www.aajeraload.duckdns.org
