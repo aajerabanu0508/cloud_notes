@@ -20,5 +20,5 @@ systemctl start httpd
  cd website {open folder website}
  touch index.html {create file index.html}
  echo "<h1>Hello from Linux EC2 Website</h1>" > index.html {write into file}
- cat index.html {Read file}
+ cat index.html
  cp index.html /var/www/html {Copy index.html file to Apache main website folder
