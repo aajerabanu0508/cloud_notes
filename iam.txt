@@ -1,0 +1,38 @@
+Step 1: Create an S3 bucket
+Step 2: Create an IAM Policy
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject"
+      ],
+      "Resource": "arn:aws:s3:::student-profile-images/*"
+    }
+  ]
+}
+Step 3: Create an IAM Role
+Step 4: Attach the Role to EC2
+Step 5: Test S3 access
+aws sts get-caller-identity
+aws s3 ls
+echo "Hello AWS IAM Role" > test.txt
+
+aws s3 cp test.txt \
+s3://student-profile-images/test.txt
+task
+Your tasks:
+1. Create an S3 bucket.
+2. Create an IAM policy that allows s3:ListBucket and s3:PutObject.
+3. Create an IAM Role named EC2-S3-Role.
+4. Configure EC2 as the trusted entity.
+5. Attach the IAM policy.
+6. Launch an EC2 Ubuntu instance.
+7. Attach the IAM Role to EC2.
+8. Connect to EC2 using SSH.
+9. Install AWS CLI if it is not already installed.
+10. Run aws sts get-caller-identity.
+11. Upload a file to S3.
+12. Remove the IAM Role and verify that the access no longer works.
