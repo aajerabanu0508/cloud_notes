@@ -1,0 +1,174 @@
+-------------------------------------------------------------------------------------------------------------------------
+Windows EC2 
+-------------------------------------------------------------------------------------------------------------------------
+Create New User in Windows EC2:
+Create a Windows EC2 instance.
+Login to Windows EC2 using RDP
+ Press Windows + R
+ Type -> lusrmgr.msc
+ Click OK
+Local Users and Groups window opens
+Click -> Users
+Right click inside empty area
+Select -> New User
+Enter:
+Username
+Password
+Confirm Password
+Optional:
+Uncheck -> User must change password at next logon
+Check -> Password never expires
+Click -> Create
+Click -> Close
+Double click created user
+Open -> Member Of tab
+Click -> Add
+Enter: Administrators
+Click -> Check Names
+Click -> OK
+Click -> Apply
+Click -> OK
+
+Login Using Created User:
+Close current RDP session
+Press Windows + R
+Type -> mstsc
+Press Enter
+Paste Public IP/Public DNS
+Click Connect
+More Choices:
+Username ->Created username
+Enter password
+Click OK
+Windows desktop opens using new user
+
+See Hostname in Windows EC2
+Login to Windows EC2 using RDP
+Press Windows + R
+Type ->cmd
+Press Enter
+Command Prompt opens
+Type:
+hostname
+Press Enter
+Current hostname/computer name will be displayed
+
+Change Hostname in Windows EC2:
+Press Windows + R
+Type -> sysdm.cpl
+Press Enter
+Open -> Computer Name tab
+Click -> Change
+Enter new computer name
+Example:
+Windows-Server
+Click OK
+Restart system
+Hostname changes successfully
+
+Website Hosting:
+Instance created
+Select windows instance
+Open Security Tab {Below the instance details: Security}
+Click Edit inbound rules
+Add rules 
+RDP (if not there); HTTP
+{Type: HTTP; port:80; source: anywhere}
+Save rules
+Connect with your windows EC2 instance 
+Inside that
+1) Click: Server Manager
+2) Click: Add roles and features
+3) Select: At top right-> Manage: Role-based or feature-based installation
+4) Click: Next
+5) Click: Next
+6) Check: Web Server (IIS)
+7) Click: Add Features
+8) Click: Next (until install page comes)
+9) Click: Install
+10)Click: Close
+11) Open File Explorer
+12) Go to: C:\inetpub\wwwroot
+13) View → Show → File name extensions->Right-click blank space: New → Text Document
+14) Rename file: index.html
+15) Click: Yes {if file extension warning appears}
+17) Open: index.html
+18) Type: <h1>Hello from Windows EC2 Website</h1>
+19) Save file
+20) Copy: index.html
+21) Paste into: C:\inetpub\wwwroot
+22) Go back to EC2 Console (minimize button or alt+tab)
+23) Copy: Public IPv4 address
+24) Open browser
+25) Type: http://PUBLIC-IP
+26) Press Enter
+27) Webpage opens successfully
+
+
+-------------------------------------------------------------------------------------------------------------------------
+Linux EC2
+-------------------------------------------------------------------------------------------------------------------------
+See Hostname in Linux EC2:
+Connect to Linux EC2 terminal
+Type: hostname
+Press Enter
+Current hostname will be displayed
+
+Change Hostname in Linux EC2:
+Connect to Linux EC2 terminal
+Type:
+sudo hostnamectl set-hostname Linux-Server
+Press Enter
+Hostname changes
+Verify:
+hostname
+
+Create New User in Linux EC2:
+Connect to Linux EC2 terminal
+Create user:
+sudo adduser student
+Set password:
+sudo passwd student
+Enter new password
+Re-enter password
+
+Give Admin/Sudo Access to User:
+Type:
+sudo usermod -aG wheel student
+
+Switch to that user:
+su - student
+
+Login Using Created User:
+Connect to Linux EC2 terminal
+Initially user 
+su – student
+Enter password
+Changed to student from user.
+
+Website Hosting:
+Instance created
+Select Linux Instance
+Open Security Tab {Below the instance details: Security}
+Under: Security groups Click the security group link.
+Click Edit inbound rules
+Click Add rule: SSH (if not there); HTTP
+{Type: HTTP; port:80; source: anywhere}
+Save rules
+Select Linux instance->connect->Ec2 Instance connect-> connect
+Inside Terminal
+1) sudo su
+2) yum install httpd -y
+3) systemctl start httpd
+4) systemctl enable httpd
+5) cd /var/www/html {go to default website folder of apache web server}
+6) mkdir website {create folder name: website}
+7) cd website {open folder website}
+8) touch index.html {create file index.html}
+9) echo "<h1>Hello from Linux EC2 Website</h1>" > index.html {write into file}
+10) cat index.html {Read file}
+11) cp index.html /var/www/html {Copy index.html file to Apache main website folder}
+Go back to EC2 console
+Copy public IPV4 address
+Open new tab copy, paste, enter
+The webpage opens
